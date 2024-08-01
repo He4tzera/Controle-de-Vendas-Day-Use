@@ -1,0 +1,12 @@
+﻿version: "3.7"
+services:
+  sql-server-db:
+    container_name: sqlserver2022
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports: 
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "StrongPassword123!"  # Senha temporária para o usuário SA
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
