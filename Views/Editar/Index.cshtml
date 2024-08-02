@@ -1,15 +1,14 @@
 ﻿@model DayuseModel
-
 @{
-    ViewData["Title"] = "Cadastro de Day Use";
+    ViewData["Title"] = "Editar de Day Use";
 }
 
-<form method="post" asp-controller="Cadastro" asp-action="Index">
+<form method="post" asp-controller="Editar" asp-action="Index">
+    <input type="hidden" asp-for="Id" />
+    <div class="text-center" >
+        <h1 class="display-4 mb-5 m-5" >Editar Venda</h1>
 
-    <div class="text-center">
-        <h1 class="display-4 mb-5">Cadastro de Venda</h1>
-
-        <div class="row mb-3 gap-2 mt-5">
+        <div class="row mb-3 gap-2">
             <input class="form-control col" type="text" asp-for="Nome" placeholder="Nome Completo">
             <input class="form-control col" type="tel" asp-for="Telefone" pattern="[(][0-9]{2}[)][0-9]{5}-[0-9]{4}" placeholder="(11)99999-9999">
         </div>
@@ -26,18 +25,18 @@
             <span class="text-danger col" asp-validation-for="DataVenda"></span>
         </div>
         <div class="row mb-3 gap-2">
-                <select class="form-control col" asp-for="Aluno" id="Aluno">
-                    <option value=true>Aluno</option>
-                    <option value=false>Não Aluno</option>
-                </select>
-                <input type="text" class="form-control col" asp-for="Preco" placeholder="Preço">
+            <select class="form-control col" asp-for="Aluno" id="Aluno">
+                <option value=true>Aluno</option>
+                <option value=false>Não Aluno</option>
+            </select>
+            <input type="text" class="form-control col" asp-for="Preco" placeholder="Preço">
         </div>
 
         <div class="d-inline-flex justify-content-center align-items-md-center mt-2 gap-2">
 
-            <a type="button" class="btn btn-primary " asp-controller="Home" asp-action="Index">Voltar</a>
+            <a type="button" class="btn btn-primary " asp-controller="Listagem" asp-action="Index">Voltar</a>
 
-            <button type="submit" class="btn btn-success ">Cadastrar</button>
+            <button type="submit" class="btn btn-success ">Editar</button>
         </div>
     </div>
 </form>

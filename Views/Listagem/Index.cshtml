@@ -4,7 +4,7 @@
     ViewData["Title"] = "Lista de Day Use";
 }
 <div class="text-center">
-    <h1 class="display-4">Lista de Day Use</h1>
+    <h1 class="display-4" style="margin-bottom:70px">Lista de Day Use</h1>
     <table class="table">
         <thead>
             <tr>
@@ -13,6 +13,7 @@
                 <th scope="col">Telefone</th>
                 <th scope="col">Pulseira</th>
                 <th scope="col">Aluno</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -33,10 +34,47 @@
                         {
                             <td>Não Aluno</td>
                         }
+                        <td>
+                            <a asp-controller="Editar" asp-action="Index" asp-route-id="@dayuse.Id" class="btn btn-outline-success ">Editar</a>
+                            <button type="button" class="btn btn-outline-danger" onclick="openDeleteModal(@dayuse.Id)">Excluir</button>
+                        </td>
                     </tr>
                 }
             }
-            
         </tbody>
     </table>
 </div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                Tem certeza de que deseja excluir este item?
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="deleteForm" method="post"asp-controller="Editar" asp-action="Delete">
+                    <input type="hidden" id="deleteId" name="id" value="" />
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function openDeleteModal(id) {
+        document.getElementById('deleteId').value = id;
+        var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        deleteModal.show();
+    }
+</script>
