@@ -1,5 +1,3 @@
-
-
 using Controle.data;
 using Microsoft.EntityFrameworkCore;
 
