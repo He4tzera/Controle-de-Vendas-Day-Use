@@ -5,13 +5,14 @@
 }
 
 <form method="post" asp-controller="Editar" asp-action="Index">
-    <input type="hidden" asp-for="Id" />
-    <div class="text-center" >
-        <h1 class="display-4 mb-5 m-5" >Editar Venda</h1>
+    <div class="text-center">
+        <h1 class="display-4 mb-5">Cadastro de Venda</h1>
 
-        <div class="row mb-3 gap-2">
+      
+
+        <div class="row mb-3 gap-2 mt-5">
             <input class="form-control col" type="text" asp-for="Nome" placeholder="Nome Completo">
-            <input class="form-control col" type="tel" asp-for="Telefone" pattern="[(]{1}[0-9]{2}[)]{1}[0-9]{5}-[0-9]{4}" placeholder="(11)99999-9999">
+            <input class="form-control col" type="tel" asp-for="Telefone" pattern="[(][0-9]{2}[)][0-9]{5}-[0-9]{4}" placeholder="(11)99999-9999">
         </div>
         <div class="row mb-3 gap-2">
             <span class="text-danger col" asp-validation-for="Nome"></span>
@@ -31,13 +32,27 @@
                 <option value=false>Não Aluno</option>
             </select>
             <input type="text" class="form-control col" asp-for="Preco" placeholder="Preço">
+            <select class="form-control col" asp-for="FormaPagamento" id="FormaPagamento">
+                <option value=Debito>Debito</option>
+                <option value=Credito>Credito</option>
+                <option value="Pix">Pix</option>
+                <option value="TP">TP</option>
+                <option value="GP">GP</option>
+            </select>
+
+            <div class="row mb-3 gap-2">
+                <span class="text-danger col" asp-validation-for="Aluno"></span>
+                <span class="text-danger col" asp-validation-for="Preco"></span>
+                <span class="text-danger col" asp-validation-for="FormaPagamento"></span>
+            </div>
+
         </div>
 
         <div class="d-inline-flex justify-content-center align-items-md-center mt-2 gap-2">
 
-            <a type="button" class="btn btn-primary " asp-controller="Listagem" asp-action="Index">Voltar</a>
+            <a type="button" class="btn btn-primary " asp-controller="Listagem" asp-action="Index"><i class="bi bi-arrow-return-left mx-2"></i>Voltar</a>
 
-            <button type="submit" class="btn btn-success ">Editar</button>
+            <button type="submit" class="btn btn-success "><i class="bi bi-check-square mx-2"></i>Editar</button>
         </div>
     </div>
 </form>

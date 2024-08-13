@@ -15,7 +15,6 @@ namespace Controle.Controllers
         public IActionResult Index()
         {
             IEnumerable<DayuseModel>dayuse = _db.Dayuse;
-
             return View(dayuse);
         }
     }

@@ -4,15 +4,29 @@
     ViewData["Title"] = "Lista de Day Use";
 }
 <div class="text-center">
-    <h1 class="display-4" style="margin-bottom:70px">Lista de Day Use</h1>
-    <table class="table">
+    <h1 class="display-4  my-4" style="margin-bottom:70px">Lista de Day Use</h1>
+        @if (TempData["Mensagem de Sucesso"] != null)
+        {
+            <div class="alert alert-dismissible alert-success" role="alert">
+                @TempData["Mensagem de Sucesso"]
+            </div>
+         }
+
+        @if (TempData["Mensagem de Erro"] != null)
+        {
+            <div class="alert alert-dismissible alert-danger" role="alert">
+                @TempData["Mensagem de Erro"]
+            </div>
+         }
+    
+    <table class="table" id="Listagem">
         <thead>
             <tr>
                 <th scope="col">Nome</th>
-                <th scope="col">Data de Venda</th>
                 <th scope="col">Telefone</th>
-                <th scope="col">Pulseira</th>
                 <th scope="col">Aluno</th>
+                <th scope="col">Pulseira</th>
+                <th scope="col">Data de Venda</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -23,9 +37,7 @@
                 {
                     <tr>
                         <td>@dayuse.Nome</td>
-                        <td>@dayuse.DataVenda</td>
                         <td>@dayuse.Telefone</td>
-                        <td>@dayuse.Pulseira</td>
                         @if(dayuse.Aluno == true)
                         {
                             <td>Aluno</td>
@@ -34,9 +46,11 @@
                         {
                             <td>Não Aluno</td>
                         }
+                        <td>@dayuse.Pulseira</td>
+                        <td>@dayuse.DataVendaFormatada</td>
                         <td>
-                            <a asp-controller="Editar" asp-action="Index" asp-route-id="@dayuse.Id" class="btn btn-outline-success ">Editar</a>
-                            <button type="button" class="btn btn-outline-danger" onclick="openDeleteModal(@dayuse.Id)">Excluir</button>
+                            <a asp-controller="Editar" asp-action="Index" asp-route-id="@dayuse.Id" class="btn btn-outline-success "> <i class="bi bi-pencil-square mx-2"></i> Editar</a>
+                            <button type="button" class="btn btn-outline-danger" onclick="openDeleteModal(@dayuse.Id)"><i class="bi bi-trash mx-2"></i>Excluir</button>
                         </td>
                     </tr>
                 }

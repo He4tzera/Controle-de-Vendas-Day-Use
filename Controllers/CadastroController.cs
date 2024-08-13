@@ -28,9 +28,11 @@ namespace Controle.Controllers
             {
                 _db.Dayuse.Add(dayuse);
                 _db.SaveChanges();
+                TempData["Mensagem de Sucesso"] = "Cadastro Realizado com Sucesso !";
 
                 return RedirectToAction("Index");
             }
+            TempData["Mensagem de Erro"] = "Aconteceu algo de errado e não foi possivel cadastrar!";
             return View();
 
         }
