@@ -8,6 +8,15 @@
 
   <ItemGroup>
     <Content Remove="Controllers\json.json" />
+    <Content Remove="wwwroot\js\script.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\script.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\script.js" />
   </ItemGroup>
 
   <ItemGroup>
